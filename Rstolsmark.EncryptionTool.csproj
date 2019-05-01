@@ -10,7 +10,7 @@
     <Version>1.0.0</Version>
     <Authors>ragnarstolsmark</Authors>
     <Company>Rstolsmark</Company>
-    <Description>A .NET global tool for encrypting and decrypting passwords with AES using Rstolsmark.EncryptionLib.</Description>
+    <Description>A .NET global tool for encrypting and decrypting strings with AES using Rstolsmark.EncryptionLib.</Description>
     <PackageTags>encryption;encrypt;decrypt;AES;tool;Rstolsmark.EncryptionLib</PackageTags>
     <RepositoryUrl>https://github.com/ragnarstolsmark/Rstolsmark.EncryptionTool</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

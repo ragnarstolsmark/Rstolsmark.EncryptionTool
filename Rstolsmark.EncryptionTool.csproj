@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <PackageReference Include="XKCDPasswordGen" Version="1.0.3" />
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -7,7 +11,7 @@
 
   <PropertyGroup>
     <PackageId>Rstolsmark.EncryptionTool</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>ragnarstolsmark</Authors>
     <Company>Rstolsmark</Company>
     <Description>A .NET global tool for encrypting and decrypting strings with AES using Rstolsmark.EncryptionLib.</Description>
@@ -19,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rstolsmark.EncryptionLib" Version="1.0.0" />
+    <PackageReference Include="Rstolsmark.EncryptionLib" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

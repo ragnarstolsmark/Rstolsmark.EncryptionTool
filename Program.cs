@@ -1,6 +1,7 @@
 ﻿using System;
 using Rstolsmark.EncryptionLib;
 using static Rstolsmark.EncryptionLib.StringEncryptor;
+using XKCDPasswordGen;
 
 namespace Rstolsmark.EncryptionTool
 {
@@ -8,23 +9,34 @@ namespace Rstolsmark.EncryptionTool
     {
         static void Main(string[] args)
         {
-            if(args.Length == 0){
+            if (args.Length == 0)
+            {
                 PrintUsage();
                 return;
             }
-            if(string.Equals(args[0], "encrypt", StringComparison.OrdinalIgnoreCase)){
-                if(args.Length == 2){
-                    var result = Encrypt(args[1]);
-                    PrintEncryptionResult(result);
+            if (string.Equals(args[0], "encrypt", StringComparison.OrdinalIgnoreCase))
+            {
+                if (args.Length == 2)
+                {
+                    string password = XkcdPasswordGen.Generate(4);
+                    var result = Encrypt(args[1], password);
+                    Console.WriteLine("Password:");
+                    Console.WriteLine(password);
+                    Console.WriteLine("Encrypted data:");
+                    Console.WriteLine(result);
                     return;
                 }
-                if(args.Length == 3){
+                if (args.Length == 3)
+                {
                     var result = Encrypt(args[1], args[2]);
-                    PrintEncryptionResult(result);
+                    Console.WriteLine(result);
                     return;
                 }
-            }else if(string.Equals(args[0], "decrypt", StringComparison.OrdinalIgnoreCase)){
-                if(args.Length == 3){
+            }
+            else if (string.Equals(args[0], "decrypt", StringComparison.OrdinalIgnoreCase))
+            {
+                if (args.Length == 3)
+                {
                     var result = Decrypt(args[1], args[2]);
                     Console.WriteLine(result);
                     return;
@@ -32,25 +44,18 @@ namespace Rstolsmark.EncryptionTool
             }
             PrintUsage();
 
-            void PrintEncryptionResult(EncryptionResult result){                
-                Console.WriteLine("Keep the key secure and use it to decrypt the data.");
-                Console.WriteLine("Key:");
-                Console.WriteLine(result.Key);
-                Console.WriteLine("Data:");
-                Console.WriteLine(result.EncryptedData);
-            }
-
-            void PrintUsage(){
+            void PrintUsage()
+            {
                 Console.WriteLine("\nUsage:");
-                Console.WriteLine("To encrypt a plaintext string and let the encryption tool generate a key:");
+                Console.WriteLine("To encrypt a plaintext string with a generated password:");
                 Console.WriteLine("encryptiontool encrypt <plaintext>");
-                Console.WriteLine("To encrypt a plaintext string with a specific key:");
-                Console.WriteLine("encryptiontool encrypt <plaintext> <key>");
+                Console.WriteLine("To encrypt a plaintext string with a specific password:");
+                Console.WriteLine("encryptiontool encrypt <plaintext> <password>");
                 Console.WriteLine("To decrypt an encrypted string:");
-                Console.WriteLine("encryptiontool decrypt <encrypted data> <key>");
+                Console.WriteLine("encryptiontool decrypt <encrypted data> <password>");
             }
         }
 
-        
+
     }
 }
